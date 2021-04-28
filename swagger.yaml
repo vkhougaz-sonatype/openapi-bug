@@ -1,0 +1,31 @@
+swagger: "2.0"
+info:
+  version: v1
+  title: Our API
+  description: The REST API for interacting with Our API
+host: localhost:1234
+schemes:
+  - http
+paths:
+  "/api/job/{jobid}/status":
+    get:
+      summary: getJobStatus
+      description: Get the current status for a job.
+      operationId: getJobStatus
+      produces:
+        - application/json;charset=utf-8
+      parameters:
+        - required: true
+          in: path
+          name: jobid
+          type: string
+      responses:
+        "200":
+          schema:
+            $ref: "#/definitions/JobStatus"
+          description: ""
+        "404":
+          description: "`jobid` not found"
+definitions:
+  JobStatus:
+    type: string
